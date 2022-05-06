@@ -1,4 +1,7 @@
 from flask import Flask
+from .services.authentication.auth import auth
+from .services.bookmarks.bookmarks import bookmarks
+
 import os
 
 
@@ -13,9 +16,7 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    @app.get("/hello")
-    def index():
-        return {
-            "message": "Hello world",
-        }
+    app.register_blueprint(auth)
+    app.register_blueprint(bookmarks)
+
     return app
