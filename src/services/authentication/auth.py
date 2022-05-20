@@ -145,3 +145,14 @@ def get_user():
             "username": user.username,
         },
     }), HTTP_200_SUCCESS
+
+
+@auth.get('/refresh')
+@jwt_required(refresh=True)
+def get_refresh_token():
+    user_id = get_jwt_identity()
+    access = create_access_token(identity=user_id)
+    return jsonify({
+        "message": "The access was created successfully",
+        "access": access,
+    }), HTTP_200_SUCCESS
