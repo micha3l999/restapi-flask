@@ -55,9 +55,11 @@ def get_all():
             "message": "Bookmark created successfully",
             "bookmark": {
                 "id": bookmark.id,
+                "body": bookmark.body,
                 "url": bookmark.url,
                 "short_url": bookmark.short_url,
                 "visits": bookmark.visits,
+                "created_at": bookmark.created_at,
             }
         }), HTTP_200_SUCCESS
     else:
