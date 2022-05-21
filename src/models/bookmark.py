@@ -12,8 +12,7 @@ class Bookmark(db.Model):
     visits = db.Column(db.Integer, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_at = db.Column(db.DateTime, default=datetime.now())
-
-    updated_at = db.Column(db.DateTime, default=datetime)
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
